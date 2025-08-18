@@ -2,7 +2,7 @@
 //  UltraMobileAppApp.swift
 //  UltraMobileApp
 //
-//  Created by RajayGoms on 8/14/25.
+//  Created by Rajendran Eshwaran on 8/14/25.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct UltraMobileAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CoordinatorView()
         }
     }
 }
