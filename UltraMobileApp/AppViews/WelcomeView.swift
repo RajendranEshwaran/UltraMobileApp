@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @State private var phoneNumber = "Phone Number"
+    @State private var phoneNumber = AppGeneric.phonenumber
+    @EnvironmentObject private var coordinator: Coordinator
+    
     var body: some View {
         ZStack(alignment: .center) {
             Color.purple
@@ -18,17 +20,11 @@ struct WelcomeView: View {
                 .aspectRatio(contentMode: .fill)
                 .opacity(0.05)
             VStack {
-                Text(AppGeneric.welcome)
-                    .font(.system(size: 30, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.white)
-                    .padding()
-                Text(AppGeneric.connecting)
-                    .font(.system(size: 20, weight: .regular, design: .rounded))
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.white)
-                    .padding()
+                WelcomePanelView()
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    coordinator.pushAppView(.loginPage)
+                }, label: {
                     Text("Login")
                         .font(.system(size: 30, weight: .semibold, design: .rounded))
                         .foregroundStyle(.white)
@@ -59,7 +55,7 @@ struct WelcomeView: View {
                     .frame(width: 300, height: 60)
                
                 
-                TextField("$phoneNumber", text: $phoneNumber)
+                TextField(AppGeneric.phonenumber, text: $phoneNumber)
                               .padding(15)
                               .background(
                                 Color.black

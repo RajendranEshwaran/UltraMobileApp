@@ -69,3 +69,53 @@ struct PrivacyTermsView: View {
         }
     }
 }
+
+struct WelcomePanelView: View {
+    var body: some View {
+        Text(AppGeneric.welcome)
+            .font(.system(size: 30, weight: .semibold, design: .rounded))
+            .foregroundStyle(.white)
+            .padding()
+        Text(AppGeneric.connecting)
+            .font(.system(size: 20, weight: .regular, design: .rounded))
+            .multilineTextAlignment(.center)
+            .foregroundStyle(.white)
+            .padding()
+    }
+}
+
+struct PasswordToggleView: View {
+        @State private var password: String = ""
+        @State private var isShowingPassword: Bool = false
+
+        var body: some View {
+            HStack {
+                Group {
+                    if isShowingPassword {
+                        TextField("Password", text: $password, prompt: Text("Password"))
+                    } else {
+                        SecureField("Password", text: $password)
+                    }
+                }
+                .foregroundStyle(.white)
+                .textFieldStyle(.plain)
+                .padding(15)
+                .background(
+                  Color.black
+                      .overlay(
+                          RoundedRectangle(cornerRadius: 7)
+                              .stroke(.secondary.opacity(0.5), lineWidth: 1)
+                              
+                      )
+                )
+                Button(action: {
+                    isShowingPassword.toggle()
+                }) {
+                    Image(systemName: isShowingPassword ? "eye.slash" : "eye")
+                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
+                }
+            }
+            .padding()
+        }
+    }

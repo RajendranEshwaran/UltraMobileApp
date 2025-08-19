@@ -15,4 +15,5 @@ final class AppGeneric {
     static let shopOnline = "Shop Online"
     static let findStore = "Find a Store"
     static let privacy = "By using Ultra Mobile's App agree to the  and terms"
+    static let phonenumber = "Phone Number"
 }
