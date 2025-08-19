@@ -33,7 +33,7 @@ struct WelcomeView: View {
                         .font(.system(size: 30, weight: .semibold, design: .rounded))
                         .foregroundStyle(.white)
                         .padding()
-                        
+                        .frame(width: 300, height: 60)
                 }).frame(width: 300, height: 60, alignment: .center)
                     .background(.button1)
                     .cornerRadius(20)
@@ -84,8 +84,19 @@ struct WelcomeView: View {
                     .padding()
           
                 HStack {
-                   
-                }
+                    PlanView(title: AppGeneric.activatePlan, icon: "bolt.ring.closed")
+                        .padding(.horizontal, 50)
+                    PlanView(title: AppGeneric.shopOnline, icon: "cart")
+                        .padding(.horizontal, 50)
+                    PlanView(title: AppGeneric.findStore, icon: "storefront")
+                        .padding(.horizontal, 50)
+                }.frame(height: 100)
+                    .padding(.top, 30)
+                    PrivacyTermsView(privacyText: ["By using Ultra Mobile's App agree to the","privacy policy","and","terms"])
+                        .lineLimit(2)
+                        .frame(width: 300, height: 20)
+                        
+        
             }.offset(x: -40)
         }.edgesIgnoringSafeArea(.all)
     }
