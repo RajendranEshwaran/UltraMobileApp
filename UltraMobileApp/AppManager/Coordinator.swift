@@ -11,6 +11,7 @@ import SwiftUI
 enum AppPages: String, Hashable {
     case welcomePage
     case loginPage
+    case homePage
     case emptyView
 }
 
@@ -26,6 +27,7 @@ enum AppSheets: String, Identifiable {
 enum AppFullCovers: String, Identifiable {
     case welcomeFullCover
     case loginFullCover
+    case homePage
     
     var id: String {
         self.rawValue
@@ -60,7 +62,7 @@ class Coordinator: ObservableObject {
     }
     
     func presentFullCover(_ fullScreen: AppFullCovers) {
-        navigationPath.append(fullScreen)
+        self.currentFullCover = fullScreen
     }
     
     func dismissSheet() {
@@ -80,6 +82,7 @@ class Coordinator: ObservableObject {
         switch view {
         case .welcomePage: WelcomeView()
         case .loginPage: LoginView()
+        case .homePage : HomeView()
         case .emptyView: EmptyView()
         }
     }
@@ -97,6 +100,7 @@ class Coordinator: ObservableObject {
         switch fullcover {
         case .welcomeFullCover: Text("welcomeFullCover")
         case .loginFullCover:Text("loginFullCover")
+        case .homePage: LandingView()
         }
     }
 }

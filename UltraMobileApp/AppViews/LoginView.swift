@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var yourPhoneNumber = "9877787888"
     @State private var password = ""
+    @EnvironmentObject private var coordinator: Coordinator
     var body: some View {
         ZStack(alignment: .center) {
             Color.purple
@@ -57,11 +58,13 @@ struct LoginView: View {
                         
                 })
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    coordinator.presentFullCover(.homePage)
+                }, label: {
                     Text("Login")
                         .foregroundStyle(.black)
                         .font(.system(.callout, weight: .bold))
-                        .padding()
+                        .frame(width: 300, height: 60)
                         
                 })
                 .frame(width: 300, height: 60)
