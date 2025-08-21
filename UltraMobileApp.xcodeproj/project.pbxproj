@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				B493ABCB2E4E774700176D7E /* UltraMobileApp */,
+				B4C106352E577AD80020B4D2 /* New Group */,
 				B493ABCA2E4E774700176D7E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +44,13 @@
 				B493ABC92E4E774700176D7E /* UltraMobileApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B4C106352E577AD80020B4D2 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

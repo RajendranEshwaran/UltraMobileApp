@@ -2,7 +2,7 @@
 //  CustomTabbarView.swift
 //  UltraMobileApp
 //
-//  Created by RajayGoms on 8/20/25.
+//  Created by Rajendran Eshwaran on 8/20/25.
 //
 
 import SwiftUI

@@ -31,6 +31,11 @@ struct LoginView: View {
                             .frame(width: 200)
                             .background(.black)
                             .foregroundStyle(.white)
+                            .onChange(of: yourPhoneNumber){
+                                if !yourPhoneNumber.isEmpty {
+                                    yourPhoneNumber = yourPhoneNumber.formatPhoneNumber()
+                                }
+                            }
                     }
                     
                     Button(action: {}, label: {
