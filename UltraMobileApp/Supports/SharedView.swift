@@ -128,11 +128,13 @@ struct InformationCardView<Content: View>: View {
     var padding: CGFloat = 16
     var fontColor: Color = .white
     var fontSize: Font = .system(size: 25, weight: .bold, design: .rounded)
-    init(@ViewBuilder content: () -> Content){
+    var alignment: Alignment = .leading
+    init(@ViewBuilder content: @escaping () -> Content){
         self.content = content()
     }
     
     var body: some View {
         content
+            
     }
 }
