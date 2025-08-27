@@ -38,3 +38,45 @@ struct PlanDetailCardView<Content: View>: View {
         content
     }
 }
+
+struct RemainingDataCardView: View {
+    
+    var isExpand: Bool = false
+    var dataType: String = "5G . 4G . LTE Data"
+    var remainingData: String = "0.00 GB Left"
+    var actionIcon: String = "plus"
+    let action: () -> Void
+    var body: some View {
+        HStack {
+            Image(systemName: "chart.bar")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 30, height: 30, alignment: .leading)
+                .foregroundStyle(.white)
+            
+            Text(dataType)
+                .frame(width: 80)
+                .font(.system(size: 17, weight: .regular, design: .rounded))
+                .foregroundStyle(.white)
+                .lineLimit(2)
+            
+            Spacer()
+            
+            Text(remainingData)
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                .foregroundStyle(.white)
+                .padding()
+            
+            Divider().overlay(Color.gray).padding()
+            
+            Button(action: action) {
+                Image(systemName: actionIcon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 30, height: 30)
+                    
+                    .foregroundStyle(.white)
+            }.buttonStyle(PlainButtonStyle())
+        }
+    }
+}
