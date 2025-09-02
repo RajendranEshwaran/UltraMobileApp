@@ -18,22 +18,11 @@ struct LandingView: View {
             Image("ultra")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 200, maxHeight: .infinity, alignment: .topLeading)
+                .frame(width: 200, height: 100)
+                .position(x: 200, y: 50)
+               // .frame(maxWidth: 200, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
                 .padding(.top, 30)
-            
-            //MARK:- User profile short info panel
-            HStack {
-                Text("Hi, \(userInfo.userFirstName)")
-                    .foregroundStyle(.white)
-                    .font(.system(size: 20, weight: .medium, design: .rounded))
-                
-                Spacer()
-                Text(userInfo.userPhoneNumer.formatPhoneNumber())
-                    .foregroundStyle(.white)
-                    .font(.system(size: 20, weight: .medium, design: .rounded))
-                
-            }.frame(maxWidth: .infinity, minHeight: 100, maxHeight: .infinity, alignment: .topLeading)
-                .padding(.top, 180)
+                //.background(Color.yellow)
             
             
             //MARK:- Custom Tabbar bottom panel

@@ -62,15 +62,9 @@ struct LoginView: View {
                         .padding()
                         
                 })
-                
-                Button(action: {
+
+                buttonViewWithAction(buttonText: "Login", buttonWidth: 300, buttonHeight: 60, action: {
                     coordinator.presentFullCover(.homePage)
-                }, label: {
-                    Text("Login")
-                        .foregroundStyle(.black)
-                        .font(.system(.callout, weight: .bold))
-                        .frame(width: 300, height: 60)
-                        
                 })
                 .frame(width: 300, height: 60)
                 .background(.white)
