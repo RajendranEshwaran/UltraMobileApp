@@ -45,6 +45,7 @@ struct RemainingDataCardView: View {
     var subDataTwo: String = "0.00 GB Left"
     var actionIcon: String = "plus"
     var isExpand: Bool = false
+    var lineLimit: Int = 2
     let action: () -> Void
     var body: some View {
         HStack {
@@ -55,10 +56,10 @@ struct RemainingDataCardView: View {
                 .foregroundStyle(.white)
             
             Text(subDataOne)
-                .frame(width: 80)
+                .frame(width: 100)
                 .font(.system(size: 17, weight: .regular, design: .rounded))
                 .foregroundStyle(.white)
-                .lineLimit(2)
+                .lineLimit(lineLimit)
             
             Spacer()
             

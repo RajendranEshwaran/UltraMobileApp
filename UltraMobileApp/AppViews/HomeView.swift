@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var items = [1]
     var body: some View {
            
         VStack {
@@ -70,8 +69,7 @@ struct HomeView: View {
                     Text("Remaining Data")
                         .font(.system(size: 22, weight: .semibold))
                         .foregroundStyle(.white)
-                }.headerProminence(.increased)
-                .listRowBackground(Color.black)
+                }.listRowBackground(Color.black)
                 
                 
                 // Section 4 Remaining Data section
@@ -89,7 +87,7 @@ struct HomeView: View {
                 } header: {
                     Text("Remaining Balance")
                         .font(.system(size: 22, weight: .semibold))
-                        .foregroundStyle(.white)
+                        //.foregroundStyle(.white)
                 }.headerProminence(.increased)
                 .listRowBackground(Color.black)
                 
@@ -101,6 +99,25 @@ struct HomeView: View {
                    }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .background(.panel).opacity(0.85)
                 }.listRowBackground(Color.black)
+                
+                
+                // Section 7 Remaining Balance section
+                Section {
+                    RemainingDataCardView(cardIcon: "arrow.up.message", subDataOne: "INTL Credit",subDataTwo: "$0.00", isExpand: true, lineLimit: 1, action: {
+                       
+                   }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .background(.panel).opacity(0.85)
+                }.listRowBackground(Color.black)
+                
+                
+                // Section 8 Remaining Balance section
+                Section {
+                    RemainingDataCardView(cardIcon: "airplane.circle", subDataOne: "INTL Roaming Credit",subDataTwo: "$0.00", isExpand: true, lineLimit: 2, action: {
+                       
+                   }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    .background(.panel).opacity(0.85)
+                }.listRowBackground(Color.black)
+                
             }
             .listStyle(.plain)
         }
