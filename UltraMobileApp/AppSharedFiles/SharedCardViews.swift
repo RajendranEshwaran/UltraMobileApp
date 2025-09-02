@@ -40,21 +40,21 @@ struct PlanDetailCardView<Content: View>: View {
 }
 
 struct RemainingDataCardView: View {
-    
-    var isExpand: Bool = false
-    var dataType: String = "5G . 4G . LTE Data"
-    var remainingData: String = "0.00 GB Left"
+    var cardIcon: String = "chart.bar"
+    var subDataOne: String = "5G . 4G . LTE Data"
+    var subDataTwo: String = "0.00 GB Left"
     var actionIcon: String = "plus"
+    var isExpand: Bool = false
     let action: () -> Void
     var body: some View {
         HStack {
-            Image(systemName: "chart.bar")
+            Image(systemName: cardIcon)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 30, height: 30, alignment: .leading)
                 .foregroundStyle(.white)
             
-            Text(dataType)
+            Text(subDataOne)
                 .frame(width: 80)
                 .font(.system(size: 17, weight: .regular, design: .rounded))
                 .foregroundStyle(.white)
@@ -62,7 +62,7 @@ struct RemainingDataCardView: View {
             
             Spacer()
             
-            Text(remainingData)
+            Text(subDataTwo)
                 .font(.system(size: 20, weight: .semibold, design: .rounded))
                 .foregroundStyle(.white)
                 .padding()

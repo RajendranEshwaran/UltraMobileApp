@@ -76,7 +76,7 @@ struct HomeView: View {
                 
                 // Section 4 Remaining Data section
                 Section {
-                   RemainingDataCardView(isExpand: true, actionIcon: "chevron.down", action: {
+                    RemainingDataCardView(actionIcon: "chevron.down", isExpand: true, action: {
                        
                    }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .background(.panel).opacity(0.85)
@@ -96,7 +96,7 @@ struct HomeView: View {
                 
                 // Section 6 Remaining Balance section
                 Section {
-                   RemainingDataCardView(isExpand: true, action: {
+                    RemainingDataCardView(cardIcon: "wallet.bifold", subDataOne: "Wallet",subDataTwo: "$0.00", isExpand: true, action: {
                        
                    }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .background(.panel).opacity(0.85)
