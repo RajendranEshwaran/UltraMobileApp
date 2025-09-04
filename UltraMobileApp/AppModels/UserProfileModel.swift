@@ -23,6 +23,16 @@ struct UserProfileModel {
 
 struct AccountModel: Identifiable {
     let id = UUID()
-    let name: String
-    let category: String
+    let section: String
+    let sectionItem: [String]
+    
+    static let accountSectionInfo: [AccountModel] = [
+        AccountModel(section: "My Monthly Service", sectionItem: ["Auto Renew", "Manange My Family"]),
+        AccountModel(section: "My Account", sectionItem: ["My Details", "Password & Security", "Payment Method","Transaction History", "INTL Call History"]),
+        AccountModel(section: "Preference", sectionItem: ["Communication Preference", "Wifi Calling & Text Setup", "Color Theme", "Face ID(biometrics"]),
+        AccountModel(section: "Support", sectionItem: ["Change Device", "Order Replacement Sim","Activate Replacement Sim"]),
+        AccountModel(section: "Other", sectionItem: ["Refer a Friend", "Store Locator", "Rate Checker", "Privacy Policy", "Logout"])
+    ]
+    
 }
+
