@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct AccountView: View {
+    
+    init() {
+            // For large titles
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.red]
+            // For inline titles
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
+        }
+    
     let userInfo = UserProfileModel.userProfileInfo
     let groupedItems: [String: [AccountModel]] = [:]
     let groupedSections = Dictionary(grouping: AccountModel.accountSectionInfo) {$0.section }
@@ -16,9 +24,8 @@ struct AccountView: View {
         NavigationStack {
             ZStack {
                 Color.black
-                
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: 0) {
                         VStack {
                             Text("\(userInfo.userFirstName) \(userInfo.userLastName)")
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
@@ -30,9 +37,7 @@ struct AccountView: View {
                                 .font(.system(size: 20, weight: .regular, design: .rounded))
                                 .foregroundStyle(.white)
                             Divider().overlay(Color.gray).padding()
-                            
-                            
-                        }.frame(height: 200, alignment: .bottom)
+                        }.frame(height: 140, alignment: .bottom)
                         
                     // Listing Account Menus and Navigation of the menu items
                         ForEach(AccountModel.accountSectionInfo) { section in
@@ -43,9 +48,11 @@ struct AccountView: View {
                             }
                             
                             ForEach(Array(section.sectionItem.enumerated()), id:\.offset){ index, item in
+                                
                                 NavigationLink {
                                     BalanceView()
                                 } label: {
+                            
                                     HStack {
                                         Image(systemName: section.sectionItemIcon[index])
                                             .resizable()
@@ -54,21 +61,32 @@ struct AccountView: View {
                                             .foregroundStyle(Color.white)
                                         Text(item)
                                             .foregroundStyle(.white)
-                                            .font(.system(size: 18, weight: .regular, design: .rounded))
+                                            .font(.system(size: 15, weight: .regular, design: .rounded))
                                             .padding(.vertical, 10)
+                                            
+                                        
                                         Spacer()
                                         Image(systemName: "chevron.right")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 20, height: 20)
-                                            .foregroundStyle(Color.white)
-                                    }
+                                            .foregroundStyle(Color.gray)
+                                    }.background(Color.gray.opacity(0.25))
                                 }.foregroundStyle(Color.red, Color.white)
+                                Divider().overlay(Color.gray)
+                                Spacer()
                             }
                         }
                     }
                 }
-            }.ignoresSafeArea()
+            }//.ignoresSafeArea()
+            .navigationBarTitle(Text("Account"), displayMode: .inline)
+            .navigationBarItems(leading: NavigationLink(destination: Text("Destination")) {
+                          Image(systemName: "person.crop.circle.fill")
+                            .font(.title)
+                        })
+            //.toolbarVisibility(.visible, for: .navigationBar)
+            //.toolbarBackground(Color.black, for: .navigationBar)
         }
     }
 }
