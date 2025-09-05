@@ -13,50 +13,63 @@ struct AccountView: View {
     let groupedSections = Dictionary(grouping: AccountModel.accountSectionInfo) {$0.section }
     
     var body: some View {
-        ZStack {
-            Color.black
-            VStack {
-                VStack {
-                    Text("\(userInfo.userFirstName) \(userInfo.userLastName)")
-                        .font(.system(size: 20, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white)
-                    Text("\(userInfo.userPhoneNumer.formatPhoneNumber())")
-                        .font(.system(size: 20, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white)
-                    Text("Ultra customer since Mar 2018")
-                        .font(.system(size: 20, weight: .regular, design: .rounded))
-                        .foregroundStyle(.white)
-                    Divider().overlay(Color.gray).padding()
+        NavigationStack {
+            ZStack {
+                Color.black
+                
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        VStack {
+                            Text("\(userInfo.userFirstName) \(userInfo.userLastName)")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundStyle(.white)
+                            Text("\(userInfo.userPhoneNumer.formatPhoneNumber())")
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                .foregroundStyle(.white)
+                            Text("Ultra customer since Mar 2018")
+                                .font(.system(size: 20, weight: .regular, design: .rounded))
+                                .foregroundStyle(.white)
+                            Divider().overlay(Color.gray).padding()
+                            
+                            
+                        }.frame(height: 200, alignment: .bottom)
                         
-                    
-                }.frame(height: 200, alignment: .bottom)
-                   
-                NavigationStack {
-                    List {
+                    // Listing Account Menus and Navigation of the menu items
                         ForEach(AccountModel.accountSectionInfo) { section in
                             Section {
                                 Text(section.section)
                                     .foregroundStyle(.white)
                                     .font(.system(size: 20, weight: .bold, design: .rounded))
                             }
-                            .listRowBackground(Color.black)
-                            .padding(.bottom, 10)
-                            ForEach(section.sectionItem, id:\.self){ item in
-                                VStack(alignment: .leading) {
-                                    Text(item)
-                                        .foregroundStyle(.white)
-                                        .font(.system(size: 18, weight: .regular, design: .rounded))
-                                      //  .padding(10)
-                                    Divider().overlay(Color.white)//.padding(10)
-                                }
+                            
+                            ForEach(Array(section.sectionItem.enumerated()), id:\.offset){ index, item in
+                                NavigationLink {
+                                    BalanceView()
+                                } label: {
+                                    HStack {
+                                        Image(systemName: section.sectionItemIcon[index])
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 20)
+                                            .foregroundStyle(Color.white)
+                                        Text(item)
+                                            .foregroundStyle(.white)
+                                            .font(.system(size: 18, weight: .regular, design: .rounded))
+                                            .padding(.vertical, 10)
+                                        Spacer()
+                                        Image(systemName: "chevron.right")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 20)
+                                            .foregroundStyle(Color.white)
+                                    }
+                                }.foregroundStyle(Color.red, Color.white)
                             }
                         }
-                        .listRowBackground(Color.black)
-                    }.listStyle(.plain)
-                    .background(Color.black)
+                    }
                 }
-            }
-        }.ignoresSafeArea()
+            }.ignoresSafeArea()
+        }
     }
 }
 
