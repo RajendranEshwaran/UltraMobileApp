@@ -80,3 +80,62 @@ struct RemainingDataCardView: View {
         }
     }
 }
+
+struct PlanCardView: View {
+    
+    var planDetail: Dictionary = ["1": "One Value", "2": "Two Value"]
+    var cornerRadius: CGFloat = 10
+    var firstBGColor: Color = .purple
+    var secondBGColor: Color = .black
+    var fontColor: Color = .white
+    var title: String = ""
+    var titleSub: String = ""
+    var titleFontSize: Font = .system(size: 25, weight: .bold, design: .rounded)
+    var bodyFontSize: Font = .system(size: 20, weight: .bold, design: .rounded)
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .fill(firstBGColor)
+                .shadow(radius: 5)
+                .overlay(alignment: .top) {
+                    Text(title)
+                        .foregroundColor(fontColor)
+                        .font(titleFontSize)
+                        .padding()
+                }
+            
+            RoundedRectangle(cornerRadius: 1)
+                .fill(secondBGColor)
+                .shadow(radius: 0)
+                .padding(.top, 50)
+            
+            VStack {
+                Text(titleSub)
+                    .font(bodyFontSize)
+                    .foregroundColor(fontColor)
+                    .padding(.top, 80)
+                
+                ForEach(planDetail.sorted(by: {$0.key < $1.key}), id: \.key){ (key, value) in
+                    HStack {
+                        Text(key)
+                            .font(.headline)
+                            .foregroundColor(fontColor)
+                            .padding()
+                        Spacer()
+                        
+                        Text(value)
+                            .font(.headline)
+                            .foregroundColor(fontColor)
+                            .padding()
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: 200)
+        .padding()
+    }
+}
