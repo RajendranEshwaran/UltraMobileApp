@@ -68,8 +68,7 @@ struct RemainingDataCardView: View {
                 .foregroundStyle(.white)
                 .padding()
             
-            Divider().overlay(Color.gray).padding()
-            
+            Divider().overlay(Color.gray).opacity(0.5).padding()
             Button(action: action) {
                 Image(systemName: actionIcon)
                     .resizable()

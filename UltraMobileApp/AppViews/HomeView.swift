@@ -11,24 +11,28 @@ struct HomeView: View {
     let userInfo = UserProfileModel.userProfileInfo
     let screenWidth = UIScreen.main.bounds.width
     var body: some View {
-        NavigationStack {
+        //NavigationStack {
+        SharedNavigationBar(title: "Home", showBackButton: false, content: {
                 ZStack {
                     Color.black
                     VStack {
                         List {
                             // MARK:- User profile short info panel
-                             HStack(alignment: .top) {
-                                 Text("Hi, \(userInfo.userFirstName)")
-                                     .foregroundStyle(.white)
-                                     .font(.system(size: 20, weight: .medium, design: .rounded))
-                                 
-                                 Spacer()
-                                 Text(userInfo.userPhoneNumer.formatPhoneNumber())
-                                     .foregroundStyle(.white)
-                                     .font(.system(size: 20, weight: .medium, design: .rounded))
-                                 
-                             }.frame(width: screenWidth, height: 40)
-                                .background(Color.black)
+                            Section {
+                            } header: {
+                                HStack() {
+                                    Text("Hi, \(userInfo.userFirstName)")
+                                        .foregroundStyle(.white)
+                                        .font(.system(size: 20, weight: .medium, design: .rounded))
+                                    
+                                    Spacer()
+                                    Text(userInfo.userPhoneNumer.formatPhoneNumber())
+                                        .foregroundStyle(.white)
+                                        .font(.system(size: 20, weight: .medium, design: .rounded))
+                                    
+                                }
+                            }.listRowBackground(Color.black)
+                                .listSectionSeparatorTint(Color.black)
 
                             // Section 1
                             Section {
@@ -55,7 +59,8 @@ struct HomeView: View {
                                 .background(.panel).opacity(0.85)
                                 
                             }.listRowBackground(Color.black)
-                                .padding()
+                            .padding()
+                            
                             
                             // Section 2
                             Section {
@@ -91,12 +96,14 @@ struct HomeView: View {
                             
                             // Section 3 Title
                             Section {
-                                
                             } header: {
-                                Text("Remaining Data")
-                                    .font(.system(size: 22, weight: .semibold))
-                                    .foregroundStyle(.white)
+                                HStack() {
+                                    Text("Remaining Data")
+                                        .foregroundStyle(.white)
+                                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                                }
                             }.listRowBackground(Color.black)
+                                .listSectionSeparatorTint(Color.black)
                             
                             
                             // Section 4 Remaining Data section
@@ -110,13 +117,14 @@ struct HomeView: View {
                             
                             // Section 5 Title
                             Section {
-                                
                             } header: {
-                                Text("Remaining Balance")
-                                    .font(.system(size: 22, weight: .semibold))
-                                //.foregroundStyle(.white)
-                            }.headerProminence(.increased)
-                                .listRowBackground(Color.black)
+                                HStack() {
+                                    Text("Remaining Balance")
+                                        .foregroundStyle(.white)
+                                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                                }
+                            }.listRowBackground(Color.black)
+                                .listSectionSeparatorTint(Color.black)
                             
                             
                             // Section 6 Remaining Balance section
@@ -144,23 +152,14 @@ struct HomeView: View {
                                 }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                                     .background(.panel).opacity(0.85)
                             }.listRowBackground(Color.black)
-                            
                         }
                         .listStyle(.plain)
                         .listRowBackground(Color.black)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 }
-                .navigationBarTitle(Text("Home"), displayMode: .inline)
-                .navigationBarItems(trailing: NavigationLink(destination: Text("Destination")) {
-                          Image(systemName: "bell")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                        .foregroundStyle(.black)
-                            .font(.title)
-                        })
-        }
+
+        }).background(Color.black)
     }
 }
 

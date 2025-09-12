@@ -9,7 +9,9 @@ import SwiftUI
 
 struct PlansView: View {
     var body: some View {
-        Text("plans").foregroundStyle(.white)
+        
+                    Text("Your App Content Here")
+                  
     }
 }
 
