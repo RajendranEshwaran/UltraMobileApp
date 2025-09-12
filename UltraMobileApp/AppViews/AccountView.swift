@@ -15,7 +15,7 @@ struct AccountView: View {
     
     var body: some View {
         NavigationStack {
-            SharedNavigationBar(title: "Account", showBackButton: true, content: {
+            SharedNavigationBar(title: "Account", titleIcon: "", isTitleIconVisible: false, leftBarItems: LeftBarItemsView(isLeftBarItemsVisible: true, titleIcon: "arrow.left"), rightBarItems: RightBarItemsView(isRightBarItemsVisible: false, titleIcon: "arrow.right"), content: {
                 ZStack {
                     Color.black
                     ScrollView {

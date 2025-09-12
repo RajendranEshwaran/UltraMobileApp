@@ -12,7 +12,7 @@ struct HomeView: View {
     let screenWidth = UIScreen.main.bounds.width
     var body: some View {
         //NavigationStack {
-        SharedNavigationBar(title: "Home", showBackButton: false, content: {
+        SharedNavigationBar(title: "", titleIcon: "ultra", isTitleIconVisible: true, leftBarItems: LeftBarItemsView(isLeftBarItemsVisible: false, titleIcon: ""), rightBarItems: RightBarItemsView(isRightBarItemsVisible: true, titleIcon: "bell"), content: {
                 ZStack {
                     Color.black
                     VStack {
