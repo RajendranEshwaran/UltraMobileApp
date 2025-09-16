@@ -28,11 +28,10 @@ struct PlansView: View {
                             buttonViewWithAction(buttonText: "Change Plan", buttonWidth: 300, buttonHeight:60,buttonIcon: "chevron.forward.dotted.chevron.forward", action: {
                                 
                             }).background(Color.white)
-                                .frame(width: screenSize.width, height: 60, alignment: .center)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .listRowBackground(Color.black)
                                 .padding(10)
-                        }.padding(30)
+                        }.frame(width: screenSize.width)
                     }
                 }
                     
