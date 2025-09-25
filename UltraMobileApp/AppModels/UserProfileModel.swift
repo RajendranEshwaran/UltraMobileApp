@@ -37,3 +37,13 @@ struct AccountModel: Identifiable {
     
 }
 
+struct ManageBalanceModel: Identifiable {
+    let id = UUID()
+    let section: String
+    let sectionItem: [String]
+    let sectionItemIcon: [String]
+    
+    static let manageBalanceSectionInfo: [ManageBalanceModel] = [
+        //ManageBalanceModel(section: <#T##String#>, sectionItem: <#T##[String]#>, sectionItemIcon: <#T##[String]#>)
+    ]
+}
